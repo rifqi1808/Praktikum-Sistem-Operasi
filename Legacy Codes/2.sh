@@ -1,40 +1,33 @@
-echo "Masukkan nilai : "
-read N
-
-a=0
-b=1
-
-for (( i=0; i<N; i++ ))    # LOOP UNTUK MENCETAK BILANGAN FIBONANCI
+#!/bin/bash
+echo 'masukkan batas awal : '
+read a
+echo 'masukkan batas akhir : '
+read b
+echo 'masukkan modulus : '
+read c
+f=0
+echo "
+"
+for ((d=$a;d<=$b;d=d+1))
 do
- echo -n "$a "
- fn=$((a + b))
- a=$b
- b=$fn
-done
-echo ""
+let e=$a%$c
+if [ $e -ne 0 ]
+then
+echo "$a"
+let a=$a+1
 
-for (( x=1; x<=N; x++ ))   # LOOP UNTUK MENCETAK POLA ATAS SEJUMLAH N BARIS
-do
- for (( y=1; y<x; y++ ))    # LOOP UNTUK MENCETAK SPASI
- do
-  printf " "
- done
- for (( y=x; y<=N; y++ ))   # LOOP UNTUK MENCETAK BINTANG
- do
-  printf "*"
- done
- echo ""
+else
+echo 'eureka'
+let a=$a+1
+let f=$f+1
+fi
 done
+echo "$f"
+h=1
+while [ $f -gt 1 ]
+do
+h=$((h*f))
+f=$((f-1))
 
-for (( x=2; x<=N; x++ ))   # LOOP UNTUK MENCETAK POLA BAWAH SEJUMLAH N-1 BARIS
-do
- for (( y=x; y<N; y++ ))    # LOOP UNTUK MENCETAK SPASI
- do
-  printf " "
- done
- for (( y=1; y<=x; y++ ))   # LOOP UNTUK MENCETAK BINTANG
- do
-  printf "*"
- done
- echo ""
 done
+echo "$h"
